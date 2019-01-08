@@ -2,6 +2,7 @@
   <div class="clock">
     <img src="/assets/clock.svg" alt="Clock"/>
     <div class="counter">{{ counter }}</div>
+    <span class="floating-message">zZz</span> 
   </div>
 </template>
 
@@ -56,5 +57,48 @@ export default {
   text-align: center;
   line-height: 45px;
   font-weight: bold;
+}
+
+span.floating-message {
+  display: inline-block;
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  text-align: center;
+  width: 100%;
+  transform: rotate(-10deg);
+  -webkit-animation: floating 2s linear infinite;
+  -moz-animation: floating 2s linear infinite;
+  animation: floating 2s linear infinite;
+
+}
+
+@-moz-keyframes floating { 
+  50% { 
+    -moz-transform:  translateY(-5px) scale(1.1) rotate(5deg); 
+  }
+  100% { 
+    -moz-transform:  translateY(0px) scale(1) rotate(-5deg); 
+  }
+}
+
+@-webkit-keyframes floating { 
+  50% { 
+    -webkit-transform:  translateY(-5px) scale(1.1) rotate(5deg); 
+  }
+  100% { 
+    -webkit-transform:  translateY(0px) scale(1) rotate(-5deg); 
+  }
+}
+
+@keyframes floating { 
+  50% { 
+    -webkit-transform:  translateY(-5px) scale(1.1) rotate(5deg); 
+    transform:  translateY(-5px) scale(1.1); 
+  }
+  100% { 
+    -webkit-transform:  translateY(0px) scale(1) rotate(-5deg); 
+    transform:  translateY(0px) scale(1) rotate(-5deg); 
+  }
 }
 </style>
